@@ -2,7 +2,8 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./containers/Home";
 import NotFound from "./containers/NotFound";
-import PricingSheet from "./containers/PricingSheet";
+// import PricingSheet from "./containers/PricingSheet";
+import DynamicTable from "./containers/DynamicTable"
 
 export default function Routes() {
   return (
@@ -11,7 +12,7 @@ export default function Routes() {
         <Home />
       </Route>
       <Route exact path="/create-pricesheet">
-        <PricingSheet/>
+        <DynamicTable/>
       </Route>
       {/* Finally, catch all unmatched routes */}
       <Route>

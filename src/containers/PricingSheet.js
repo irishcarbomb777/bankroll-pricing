@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PricingTable from "./PricingTable"
+// import PricingTable from "./PricingTable"
 import {Button} from 'react-bootstrap'
 
 export class PricingSheet extends Component {
