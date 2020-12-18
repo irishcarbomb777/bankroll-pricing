@@ -7,10 +7,10 @@ import { LinkContainer } from "react-router-bootstrap";
 
 function App() {
   return (
-    <div className="App container py-3">
-      <Navbar collapseOnSelect bg="light" expand="md" className="mb-3">
+    <div>
+      <Navbar collapseOnSelect bg="dark" expand="md" className="mb-3">
         <LinkContainer to="/">
-          <Navbar.Brand href="/" className="font-weight-bold text-muted">
+          <Navbar.Brand href="/" className="font-weight-bold text-white">
             Blueprint Dashboard
           </Navbar.Brand>
         </LinkContainer>
@@ -18,7 +18,13 @@ function App() {
         <Navbar.Collapse className="justify-content-end">
           <Nav activeKey={window.location.pathname}>
             <LinkContainer to="/create-pricesheet">
-                <Nav.Link href="/create-pricesheet">Create Pricesheet</Nav.Link>
+                <Nav.Link href="/create-pricesheet" className="font-weight-medium text-white">Create Pricesheet</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/create-mockup">
+                <Nav.Link href="/create-mockup" className="font-weight-medium text-white">Create Mockup</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/playground">
+                <Nav.Link href="/playground" className="font-weight-medium text-white">Playground</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>

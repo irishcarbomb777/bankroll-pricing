@@ -5,64 +5,80 @@ export default class DynamicTable extends React.Component {
         super(props);
 
         this.state = {
-            message: "",
-            items: []
+            rowData : {
+                brand       : "",
+                productCode : "",
+                description : "",
+                qty         : "",
+                cost        : "",
+                jobType     : "",
+                price       : ""
+            },
+            lineItems   : []
         }
     }
 
-    updateMessage(event) {
-        this.setState({
-            message: event.target.value
-        })
-    }
+    // This method is used to update the text field before creating the row
+    // updateMessage(event) {
+    //     this.setState({
+    //         message: event.target.value
+    //     })
+    // }
 
     handleClick() {
-        var items = this.state.items;
-        items.push(this.state.message);
+        var lineItems = this.state.lineItems;
+        lineItems.push(this.state.rowData);
 
         this.setState({
-            items: items
+            lineItems: lineItems
         });
     }
 
     handleItemChanged(i, event) {
-        var items = this.state.items;
-        items[i] = event.target.value;
+        var lineItems = this.state.lineItems;
+        lineItems[i]  = event.target.value;
 
         this.setState({
-            items: items
+            lineItems: lineItems
         });
     }
 
     handleItemDelete(i) {
-        var items = this.state.items;
-        items.splice(i, 1);
+        var lineItems = this.state.lineItems;
+        lineItems.splice(i, 1);
 
         this.setState({
-            items: items
+            lineItems: lineItems
         });
     }
 
     renderRows() {
         var context = this;
 
-        return this.state.items.map(function(o, i) {
+        return this.state.lineItems.map(function(o, i) {
             return (
-                <tr key={"item-" + i}>
+                <tr key={"item-" + i} style={{height:"100px"}}>
                     <td>
+                        {i+1} <br/><br/>
                         <button onClick={context.handleItemDelete.bind(context, i)}>
                             Delete
                         </button>
                     </td>
                     <td style={{width:"10%"}}>
                         <input
+                            id = 'brand'
                             style={{width: "100%"}}
                             type="text"
                             value={o}
                             onChange={context.handleItemChanged.bind(context, i)}
                         />
                     </td>
-
+                    <td>
+                        <input
+                            type="text"
+                            value={o}
+                            onChange={context.handleItemChanged.bind(context, i)}/>
+                    </td>
                 </tr>
             );
         });
@@ -70,7 +86,7 @@ export default class DynamicTable extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{padding:"0% 10% 0% 10%"}}>
                 <table>
                     <thead>
                         <tr>
